@@ -13,12 +13,12 @@ module Jenkins
     SUCCESS_MESSAGE = "SUCCESS"
 
     def initialize(args)
-      @jenkins_url = args["JENKINS_URL"]
-      @jenkins_user = args["JENKINS_USER"]
-      @jenkins_token = args["JENKINS_TOKEN"]
-      @job_name = args["JOB_NAME"]
-      @job_params = JSON.parse(args["JOB_PARAMS"])
-      @job_timeout = args['JOB_TIMEOUT'] || DEFAULT_TIMEOUT
+      @jenkins_url = args["INPUT_JENKINS_URL"]
+      @jenkins_user = args["INPUT_JENKINS_USER"]
+      @jenkins_token = args["INPUT_JENKINS_TOKEN"]
+      @job_name = args["INPUT_JOB_NAME"]
+      @job_params = JSON.parse(args["INPUT_JOB_PARAMS"])
+      @job_timeout = args["INPUT_JOB_TIMEOUT"] || DEFAULT_TIMEOUT
     end
 
     def call

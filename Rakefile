@@ -7,7 +7,7 @@ task :git_release do
   `git add VERSION`
 	`git commit -m "Version bump to #{version}"`
 	`git push origin master`
-	`git tag -a -m "Tagging version #{version} #{version}`
+	`git tag -a -m "Tagging version #{version}" #{version}`
 	`git push origin #{version}`
 
 end
