@@ -1,7 +1,5 @@
 require 'rest-client'
 require 'json'
-# require 'byebug'
-# require 'oauth'
 module Jenkins
   class JobClient
 
@@ -91,7 +89,6 @@ module Jenkins
       job_timeout = job_timeout.to_i if job_timeout.is_a? String
       job_progress_url = "#{job_run_url}api/json"
       job_log_url = "#{job_run_url}logText/progressiveText"
-
       build_response = nil
       build_result = IN_PROGRESS_MESSAGE
       timeout_countdown = job_timeout
@@ -116,12 +113,10 @@ module Jenkins
           puts "JOB FOLLOW TIMED OUT (After #{job_timeout} seconds)"
           exit(1)
       else
-        puts "DDL validation with {build_result} status."
+        puts "DDL validation with #{build_result} status."
         begin
             log_response = perform_request(job_log_url, :get)
-            byebug
-            # log_response.content.decode('utf8')
-            puts log_response
+            puts log_response.body.force_encoding('utf-8')
         rescue
             puts "Couldn't retrieve log messages."
         end
