@@ -1,7 +1,7 @@
 FROM ruby
 
-
 COPY Gemfile /Gemfile
+COPY Gemfile.lock /Gemfile.lock
 COPY jenkins /jenkins
 
 COPY jenkins_job.rb /jenkins_job.rb
